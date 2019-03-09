@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>User</title>
+</head>
+<body>
+    <nav role="navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/users">Users</a></li>
+        </ul>
+    </nav>
+    
+    <div th:each="entry : ${jobs}" th:with="jobList=${entry.value}">
+        <p><strong th:text="${entry.key} + ': ' + ${jobList.size()}"></strong></p>
+        <table>
+            <tr>
+                <th>Item code</th>
+                <th>Item type</th>
+            </tr>
+            <tr th:each="job : ${jobList}">
+                <td th:text="${job.title}">Item code</td>
+                <td th:text="${job.description}">Item type</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
